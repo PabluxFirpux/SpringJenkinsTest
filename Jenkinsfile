@@ -2,7 +2,7 @@ pipeline {
     agent {
        dockerContainer {
           image 'maven:3.9.3-eclipse-temurin-17'
-          args "-v /tmp:/tmp"
+          remoteFs "/tmp:/tmp"
        }
     }
     stages {
@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "Building application"
                 sh "mvn install"
-                "sh cp ./target/JenkinsDemo-0.0.1-SNAPSHOT.jar /tmp"
+                sh "cp ./target/JenkinsDemo-0.0.1-SNAPSHOT.jar /tmp"
             }
         }
         stage("test") {
