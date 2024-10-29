@@ -1,12 +1,13 @@
 pipeline {
-    agent {
-       docker {
-          image 'maven:3.9.3-eclipse-temurin-17'
-          args "-v /tmp:/tmp"
-       }
-    }
+    agent none
     stages {
         stage("build") {
+        agent {
+               docker {
+                  image 'maven:3.9.3-eclipse-temurin-17'
+                  args "-v /tmp:/tmp"
+               }
+            }
             steps {
                 echo "Building application"
                 sh "mvn install"
@@ -14,6 +15,12 @@ pipeline {
             }
         }
         stage("test") {
+        agent {
+               docker {
+                  image 'maven:3.9.3-eclipse-temurin-17'
+                  args "-v /tmp:/tmp"
+               }
+            }
              steps {
                  echo "Testing application"
                  sh "mvn test"
