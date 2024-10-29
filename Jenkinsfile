@@ -17,7 +17,6 @@ pipeline {
              }
         }
         stage("dockerize") {
-        agent any
             steps {
                 echo "dockericeing the application"
                 sh "mvn install"
