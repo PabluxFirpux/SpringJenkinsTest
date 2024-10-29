@@ -1,8 +1,7 @@
 pipeline {
     agent {
        dockerContainer {
-          image 'maven:3.9.3-eclipse-temurin-17'
-          remoteFs "/tmp"
+          image '-v /tmp:/tmp maven:3.9.3-eclipse-temurin-17'
        }
     }
     stages {
