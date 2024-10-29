@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            cloud "docker-cloud"
+        }
+    }
     stages {
         stage("build") {
             steps {
@@ -19,5 +23,4 @@ pipeline {
             }
         }
     }
-
 }
