@@ -2,7 +2,7 @@ pipeline {
     agent {
        dockerContainer {
           image 'maven:3.9.3-eclipse-temurin-17'
-          remoteFs "-v /tmp:/tmp"
+          connector "-v /tmp:/tmp"
        }
     }
     stages {
