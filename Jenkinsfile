@@ -20,6 +20,7 @@ pipeline {
         agent any
             steps {
                 echo "dockericeing the application"
+                sh "mvn install"
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
             }
