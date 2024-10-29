@@ -23,6 +23,7 @@ pipeline {
         agent any
             steps {
                 echo "dockericeing the application"
+                sh "mkdir target"
                 sh "cp /tmp/JenkinsDemo-0.0.1-SNAPSHOT.jar ./target/"
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
