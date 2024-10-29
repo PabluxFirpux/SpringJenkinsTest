@@ -2,12 +2,15 @@ pipeline {
     agent {
        dockerContainer {
           image 'maven:3.9.3-eclipse-temurin-17'
+          args "-v /tmp:/tmp"
        }
     }
     stages {
         stage("build") {
             steps {
-            echo "Building application"
+                echo "Building application"
+                sh "mvn install"
+                "sh cp ./target/JenkinsDemo-0.0.1-SNAPSHOT.jar /tmp"
             }
         }
         stage("test") {
@@ -17,9 +20,10 @@ pipeline {
              }
         }
         stage("dockerize") {
+        agent any
             steps {
                 echo "dockericeing the application"
-                sh "mvn install"
+                sh "cp /tmp/JenkinsDemo-0.0.1-SNAPSHOT.jar ./target/"
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
             }
