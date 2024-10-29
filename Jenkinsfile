@@ -2,7 +2,7 @@ pipeline {
     agent {
        docker {
           image 'maven:3.9.3-eclipse-temurin-17'
-          args "/tmp:/tmp"
+          args "-v /tmp:/tmp"
        }
     }
     stages {
