@@ -2,10 +2,7 @@ pipeline {
     agent {
        dockerContainer {
           image 'maven:3.9.3-eclipse-temurin-17'
-          dir 'build'
-                  filename 'Dockerfile.build'
-                  additionalBuildArgs '--build-arg version=1.0.2'
-                  args '-v /tmp:/tmp'
+          remoteFs "/tmp"
        }
     }
     stages {
