@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        label "docker-cloud"
+        dockerContainer {
+            cloud "docker-cloud"
+            label "docker-agent"
+        }
     }
     stages {
         stage("build") {
