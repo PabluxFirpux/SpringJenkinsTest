@@ -21,8 +21,10 @@ pipeline {
         }
         stage("dockerize") {
             agent {
-                image "docker/dockerfile"
-                args "-v /tmp:/tmp"
+                docker {
+                    image "docker/dockerfile"
+                    args "-v /tmp:/tmp"
+                }
             }
             steps {
                 echo "dockericeing the application"
