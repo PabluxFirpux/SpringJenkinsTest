@@ -23,7 +23,7 @@ pipeline {
             }
              steps {
                  echo "Testing application"
-              //   sh "mvn test"
+                 sh "mvn test"
              }
         }
         stage("dockerize") {
@@ -31,10 +31,9 @@ pipeline {
             steps {
                 echo "dockericeing the application"
                 sh "dockerd &"
-                sh "cd /tmp;ls"
-               // sh "cp /tmp/JenkinsDemo-0.0.1-SNAPSHOT.jar ./target/"
-              //  sh "docker build -t jenkinsapispring:latest ."
-             //   sh "docker images"
+                sh "cp /tmp/JenkinsDemo-0.0.1-SNAPSHOT.jar ./target/"
+                sh "docker build -t jenkinsapispring:latest ."
+                sh "docker images"
             }
         }
     }
