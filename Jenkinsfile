@@ -3,11 +3,13 @@ pipeline {
     stages {
         stage("Build and test application") {
             node('maven') {
-                steps {
-                                echo "Building and testing application"
-                                sh "mvn install"
-                                sh "cp ./target/JenkinsDemo-0.0.1-SNAPSHOT.jar /tmp"
-                            }
+                stage("mec") {
+                    steps {
+                                                    echo "Building and testing application"
+                                                    sh "mvn install"
+                                                    sh "cp ./target/JenkinsDemo-0.0.1-SNAPSHOT.jar /tmp"
+                                                }
+                }
             }
         }
         stage("dockerize") {
