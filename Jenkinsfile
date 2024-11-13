@@ -1,9 +1,8 @@
 pipeline {
     agent none
     stages {
-        stage("Build and test application") {
             node('maven') {
-                stage("mec") {
+                stage("Build and test application") {
                     steps {
                                                     echo "Building and testing application"
                                                     sh "mvn install"
@@ -11,7 +10,7 @@ pipeline {
                                                 }
                 }
             }
-        }
+
         stage("dockerize") {
             agent any
             steps {
