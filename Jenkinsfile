@@ -16,15 +16,5 @@ pipeline {
 
 
         }
-        stage("dockerize") {
-            agent any
-            steps {
-                echo "dockericeing the application"
-                sh "dockerd &"
-                sh "cp /tmp/JenkinsDemo-0.0.1-SNAPSHOT.jar ./target/"
-                sh "docker build -t jenkinsapispring:latest ."
-                sh "docker images"
-            }
-        }
     }
 }
