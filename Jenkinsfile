@@ -1,16 +1,21 @@
 pipeline {
-    agent none
+    agent {
+        kubernetes {
+            inheritFrom 'maven'
+        }
+    }
     stages {
-            node('maven') {
-                stage("Build and test application") {
+        stage("Build and test application") {
+
+
                     steps {
                                                     echo "Building and testing application"
                                                     sh "mvn install"
                                                     sh "cp ./target/JenkinsDemo-0.0.1-SNAPSHOT.jar /tmp"
                                                 }
-                }
-            }
 
+
+        }
         stage("dockerize") {
             agent any
             steps {
