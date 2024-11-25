@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo "Dockericeing the application"
                 sh "dockerd &"
-                sh "docker login -u pabluxfirpux -p ${dockerhub}"
+                sh "docker login -u pabluxfirpux -p p4bl02004"
                 unstash 'application'
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
