@@ -9,6 +9,7 @@ pipeline {
             }
             steps {
                 echo "Building and testing application"
+                sh "mvn test"
                 sh "mvn install"
                 stash includes: '**/target/*.jar', name: 'application', allowEmpty: true
                 echo "Copied artifact"
