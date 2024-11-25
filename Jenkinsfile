@@ -19,7 +19,6 @@ pipeline {
             agent any
             steps {
                 echo "dockericeing the application"
-                sh "mkdir target"
                 sh "dockerd &"
                 dir("target") {
                     unstash 'application'
