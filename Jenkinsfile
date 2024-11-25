@@ -10,8 +10,7 @@ pipeline {
             steps {
                 echo "Building and testing application"
                 sh "mvn install"
-                sh "cd target"
-                stash includes: 'JenkinsDemo-0.0.1-SNAPSHOT.jar', name: 'application', allowEmpty: true
+                stash includes: '/target/*.jar', name: 'application', allowEmpty: true
                 echo "Copied artifact"
             }
         }
@@ -22,6 +21,8 @@ pipeline {
                 sh "dockerd &"
                 unstash 'application'
                 sh 'ls -l'
+                sh "cd target; ls -l"
+                sh "cd .."
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
             }
