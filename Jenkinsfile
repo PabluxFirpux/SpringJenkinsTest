@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "Building and testing application"
                 sh "mvn install"
-                stash includes: "./target/*", name: "artifact"
+                stash includes: '/target/*', name: 'application'
             }
         }
         stage("dockerize") {
@@ -20,7 +20,7 @@ pipeline {
                 sh "mkdir target"
                 sh "dockerd &"
                 dir("target") {
-                    unstash "artifact"
+                    unstash 'application'
                     sh "pwd"
                     sh "ls"
                 }
