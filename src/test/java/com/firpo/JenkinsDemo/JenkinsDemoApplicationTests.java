@@ -22,10 +22,10 @@ class JenkinsDemoApplicationTests {
 
 	@Test
 	void checkMathsAreStillRealTheSequel() {
-		int x = 5+5;
-		int y = 6+1;
-		assertEquals(x,11);
-		assertEquals(y,7);
+		int x = 15+15;
+		int y = 16+1;
+		assertEquals(x,30);
+		assertEquals(y,17);
 	}
 
 }
