@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "Building and testing application"
                 sh "mvn install"
-                sh "cp ./target/JenkinsDemo-0.0.1-SNAPSHOT.jar /tmp"
+                stash includes: "./target/JenkinsDemo-0.0.1-SNAPSHOT.jar", name: "artifact"
             }
         }
         stage("dockerize") {
@@ -19,7 +19,9 @@ pipeline {
                 echo "dockericeing the application"
                 sh "mkdir target"
                 sh "dockerd &"
-                sh "cp /tmp/JenkinsDemo-0.0.1-SNAPSHOT.jar ./target/"
+                sh "cd target"
+                unstash "artifact"
+                sh "cd .."
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
             }
