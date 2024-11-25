@@ -11,7 +11,7 @@ pipeline {
                 echo "Building and testing application"
                 sh "mvn install"
                 sh "cd target"
-                stash includes: 'JenkinsDemo-0.0.1-SNAPSHOT.jar', name: 'application'
+                stash includes: 'JenkinsDemo-0.0.1-SNAPSHOT.jar', name: 'application', allowEmpty: true
                 echo "Copied artifact"
             }
         }
