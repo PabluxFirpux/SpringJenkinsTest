@@ -20,11 +20,8 @@ pipeline {
             steps {
                 echo "dockericeing the application"
                 sh "dockerd &"
-                dir("target") {
-                    unstash 'application'
-                    sh "pwd"
-                    sh "ls"
-                }
+                unstash 'application'
+                sh 'ls -l'
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
             }
