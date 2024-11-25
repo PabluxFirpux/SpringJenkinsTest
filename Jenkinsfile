@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "Building and testing application"
                 sh "mvn install"
-                stash includes: '/target/**', name: 'application', allowEmpty: true
+                stash includes: '**/target/*.jar', name: 'application', allowEmpty: true
                 echo "Copied artifact"
             }
         }
