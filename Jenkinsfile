@@ -20,7 +20,7 @@ pipeline {
                 sh "mkdir target"
                 sh "dockerd &"
                 dir("target") {
-                    unstash: "artifact"
+                    unstash "artifact"
                     sh "pwd"
                     sh "ls"
                 }
