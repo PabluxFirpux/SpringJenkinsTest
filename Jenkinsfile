@@ -10,7 +10,9 @@ pipeline {
             steps {
                 echo "Building and testing application"
                 sh "mvn install"
-                stash includes: '/target/*', name: 'application'
+                sh "cd target"
+                stash includes: 'JenkinsDemo-0.0.1-SNAPSHOT.jar', name: 'application'
+                echo "Copied artifact"
             }
         }
         stage("dockerize") {
