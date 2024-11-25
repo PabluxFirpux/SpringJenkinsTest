@@ -23,7 +23,6 @@ pipeline {
                 sh "docker build -t jenkinsapispring:latest ."
                 sh "docker images"
                 sh "docker tag jenkinsapispring pabluxfirpux/jenkinsapispring:latest"
-                sh "docker image push pabluxfirpux/jenkinsapispring:latest --username=pabluxfirpux --password=p4bl02004"
             }
         }
     }
