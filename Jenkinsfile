@@ -15,10 +15,10 @@ pipeline {
                 echo "Copied artifact"
             }
         }
-        stage("dockerize") {
+        stage("Dockerize") {
             agent any
             steps {
-                echo "dockericeing the application"
+                echo "Dockericeing the application"
                 sh "dockerd &"
                 unstash 'application'
                 sh "docker build -t jenkinsapispring:latest ."
