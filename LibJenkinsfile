@@ -1,0 +1,15 @@
+pipeline {
+    agent none
+    stages {
+        stage("Build and test application") {
+            agent {
+                kubernetes {
+                    inheritFrom 'maven'
+                }
+            }
+            steps {
+                helloWorld("Pablux")
+            }
+        }
+    }
+}
