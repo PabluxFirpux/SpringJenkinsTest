@@ -1,4 +1,4 @@
-@Library("rafo-lib")
+@Library("rafo-lib") _
 pipeline {
     agent none
     stages {
