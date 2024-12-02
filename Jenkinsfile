@@ -18,6 +18,7 @@ pipeline {
         stage("Dockerize") {
             agent any
             steps {
+                unstash 'application'
                 echo "Dockericeing the application"
                 sh "dockerd &"
                 sh "docker login -u pabluxfirpux -p p4bl02004"
